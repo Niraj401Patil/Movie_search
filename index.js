@@ -35,3 +35,27 @@ async function getMovie() {
 }
 
 btn.addEventListener("click", getMovie);
+
+
+/*let count=0;
+function getData()
+{
+    console.log('fetching data'+ count++);
+}*/
+
+const betterFunction=myDebounce(getMovie, 1000);
+
+function myDebounce(call,d)
+{
+    let timer;
+    return function(...args)
+    {
+        if(timer) clearTimeout(timer);
+        setTimeout(()=>{
+            call();
+        },d);
+    }
+}
+
+
+
